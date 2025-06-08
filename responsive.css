@@ -1,0 +1,448 @@
+/* Responsive Design */
+
+/* Large Tablets and Small Desktops */
+@media (max-width: 1024px) {
+    .search-box input {
+        width: 200px;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .courses-grid,
+    .faculty-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 250px;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .header {
+        padding: 0 20px;
+    }
+    
+    .page-content {
+        padding: 20px;
+    }
+    
+    .search-box {
+        display: none;
+    }
+    
+    .user-info span {
+        display: none;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .filters {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .toast-container {
+        left: 20px;
+        right: 20px;
+    }
+    
+    .toast {
+        min-width: auto;
+    }
+    
+    .data-table-container {
+        overflow-x: auto;
+    }
+    
+    .data-table {
+        min-width: 600px;
+    }
+    
+    .schedule-grid {
+        overflow-x: auto;
+    }
+    
+    .days-grid {
+        min-width: 500px;
+    }
+    
+    .attendance-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 20px;
+    }
+    
+    .page-content {
+        padding: 16px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .stat-info h3 {
+        font-size: 24px;
+    }
+    
+    .chart-container {
+        padding: 20px;
+    }
+    
+    .recent-activities {
+        padding: 20px;
+    }
+    
+    .activity-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .activity-item small {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+    
+    .course-card,
+    .faculty-card {
+        padding: 20px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .card-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .calendar-grid {
+        gap: 4px;
+    }
+    
+    .calendar-day {
+        font-size: 14px;
+    }
+    
+    .time-column {
+        width: 80px;
+    }
+    
+    .time-slot {
+        font-size: 10px;
+    }
+    
+    .day-column h4 {
+        font-size: 12px;
+        padding: 12px 8px;
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 360px) {
+    .header {
+        padding: 0 16px;
+    }
+    
+    .page-content {
+        padding: 12px;
+    }
+    
+    .sidebar-header {
+        padding: 16px;
+    }
+    
+    .menu-item {
+        padding: 12px 16px;
+        margin: 2px 12px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .chart-container,
+    .recent-activities {
+        padding: 16px;
+    }
+    
+    .course-card,
+    .faculty-card {
+        padding: 16px;
+    }
+    
+    .modal-content {
+        margin: 10px;
+    }
+    
+    .modal-body {
+        padding: 16px;
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+        padding: 10px 12px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .toast {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .sidebar {
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .sidebar,
+    .header,
+    .mobile-menu-btn,
+    .btn,
+    .modal,
+    .toast-container {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .page-content {
+        padding: 0;
+    }
+    
+    .stat-card,
+    .chart-container,
+    .course-card,
+    .faculty-card {
+        box-shadow: none;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .data-table {
+        font-size: 12px;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 8px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo i,
+    .menu-item i,
+    .stat-icon {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-dark: #0f172a;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --text-light: #64748b;
+    }
+    
+    .sidebar {
+        background: linear-gradient(180deg, var(--bg-secondary) 0%, #334155 100%);
+        border-right-color: #334155;
+    }
+    
+    .header {
+        background: var(--bg-secondary);
+        border-bottom-color: #334155;
+    }
+    
+    .search-box input {
+        background: var(--bg-primary);
+        border-color: #334155;
+        color: var(--text-primary);
+    }
+    
+    .search-box input::placeholder {
+        color: var(--text-light);
+    }
+    
+    .stat-card,
+    .chart-container,
+    .course-card,
+    .faculty-card,
+    .data-table-container,
+    .attendance-calendar,
+    .schedule-grid {
+        background: var(--bg-secondary);
+        border-color: #334155;
+    }
+    
+    .data-table th {
+        background: var(--bg-primary);
+    }
+    
+    .data-table tbody tr:hover {
+        background: var(--bg-primary);
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+        background: var(--bg-primary);
+        border-color: #334155;
+        color: var(--text-primary);
+    }
+    
+    .modal-content {
+        background: var(--bg-secondary);
+    }
+    
+    .toast {
+        background: var(--bg-secondary);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .loading-screen .spinner {
+        animation: none;
+        border: 4px solid white;
+    }
+}
+
+/* Focus Styles for Accessibility */
+@media (prefers-reduced-motion: no-preference) {
+    .menu-item:focus,
+    .btn:focus,
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --shadow: none;
+        --shadow-sm: none;
+        --shadow-lg: none;
+        --shadow-xl: none;
+    }
+    
+    .stat-card,
+    .chart-container,
+    .course-card,
+    .faculty-card,
+    .data-table-container,
+    .attendance-calendar,
+    .schedule-grid {
+        border: 2px solid var(--text-primary);
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+        border: 2px solid var(--text-primary);
+    }
+}

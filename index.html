@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollegeMG</title>
+    <link rel="icon" type="image/x-icon" href="./OG logo.png">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Loading College Management System...</p>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CollegeMS</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item active" data-page="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </li>
+            <li class="menu-item" data-page="students">
+                <i class="fas fa-users"></i>
+                <span>Students</span>
+            </li>
+            <li class="menu-item" data-page="courses">
+                <i class="fas fa-book"></i>
+                <span>Courses</span>
+            </li>
+            <li class="menu-item" data-page="faculty">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>Faculty</span>
+            </li>
+            <li class="menu-item" data-page="grades">
+                <i class="fas fa-chart-line"></i>
+                <span>Grades</span>
+            </li>
+            <li class="menu-item" data-page="attendance">
+                <i class="fas fa-calendar-check"></i>
+                <span>Attendance</span>
+            </li>
+            <li class="menu-item" data-page="schedule">
+                <i class="fas fa-clock"></i>
+                <span>Schedule</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <header class="header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="page-title">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." id="global-search">
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content Container -->
+        <div class="page-content" id="page-content">
+            <!-- Dashboard Page -->
+            <div class="page dashboard-page active" id="dashboard-page">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-students">0</h3>
+                            <p>Total Students</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-courses">0</h3>
+                            <p>Active Courses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-faculty">0</h3>
+                            <p>Faculty Members</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="avg-attendance">0%</h3>
+                            <p>Average Attendance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="chart-container">
+                        <h3>Grade Distribution</h3>
+                        <canvas id="gradeChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Attendance Trends</h3>
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="recent-activities">
+                    <h3>Recent Activities</h3>
+                    <div class="activity-list" id="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Welcome to College Management System</span>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Students Page -->
+            <div class="page students-page" id="students-page">
+                <div class="page-header">
+                    <h2>Student Management</h2>
+                    <button class="btn btn-primary" id="add-student-btn">
+                        <i class="fas fa-plus"></i> Add Student
+                    </button>
+                </div>
+                
+                <div class="filters">
+                    <input type="text" placeholder="Search students..." id="student-search">
+                    <select id="student-filter">
+                        <option value="">All Departments</option>
+                    </select>
+                </div>
+
+                <div class="data-table-container">
+                    <table class="data-table" id="students-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Year</th>
+                                <th>GPA</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-tbody">
+                            <tr class="empty-state">
+                                <td colspan="7">No students found. Click "Add Student" to get started.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Courses Page -->
+            <div class="page courses-page" id="courses-page">
+                <div class="page-header">
+                    <h2>Course Management</h2>
+                    <button class="btn btn-primary" id="add-course-btn">
+                        <i class="fas fa-plus"></i> Add Course
+                    </button>
+                </div>
+                
+                <div class="filters">
+                    <input type="text" placeholder="Search courses..." id="course-search">
+                    <select id="course-filter">
+                        <option value="">All Departments</option>
+                    </select>
+                </div>
+
+                <div class="courses-grid" id="courses-grid">
+                    <div class="empty-state-card">
+                        <i class="fas fa-book"></i>
+                        <h3>No Courses Available</h3>
+                        <p>Click "Add Course" to create your first course.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculty Page -->
+            <div class="page faculty-page" id="faculty-page">
+                <div class="page-header">
+                    <h2>Faculty Management</h2>
+                    <button class="btn btn-primary" id="add-faculty-btn">
+                        <i class="fas fa-plus"></i> Add Faculty
+                    </button>
+                </div>
+                
+                <div class="filters">
+                    <input type="text" placeholder="Search faculty..." id="faculty-search">
+                    <select id="faculty-filter">
+                        <option value="">All Departments</option>
+                    </select>
+                </div>
+
+                <div class="faculty-grid" id="faculty-grid">
+                    <div class="empty-state-card">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>No Faculty Members</h3>
+                        <p>Click "Add Faculty" to add your first faculty member.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grades Page -->
+            <div class="page grades-page" id="grades-page">
+                <div class="page-header">
+                    <h2>Grade Management</h2>
+                    <button class="btn btn-primary" id="add-grade-btn">
+                        <i class="fas fa-plus"></i> Add Grade
+                    </button>
+                </div>
+                
+                <div class="filters">
+                    <input type="text" placeholder="Search..." id="grade-search">
+                    <select id="grade-course-filter">
+                        <option value="">All Courses</option>
+                    </select>
+                    <select id="grade-student-filter">
+                        <option value="">All Students</option>
+                    </select>
+                </div>
+
+                <div class="data-table-container">
+                    <table class="data-table" id="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Course</th>
+                                <th>Assignment</th>
+                                <th>Grade</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grades-tbody">
+                            <tr class="empty-state">
+                                <td colspan="6">No grades recorded. Click "Add Grade" to start grading.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Attendance Page -->
+            <div class="page attendance-page" id="attendance-page">
+                <div class="page-header">
+                    <h2>Attendance Management</h2>
+                    <button class="btn btn-primary" id="mark-attendance-btn">
+                        <i class="fas fa-check"></i> Mark Attendance
+                    </button>
+                </div>
+                
+                <div class="attendance-calendar" id="attendance-calendar">
+                    <div class="calendar-header">
+                        <button id="prev-month">&lt;</button>
+                        <h3 id="current-month"></h3>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="attendance-stats">
+                    <div class="stat-card">
+                        <h4>Today's Attendance</h4>
+                        <span id="today-attendance">0%</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>This Week</h4>
+                        <span id="week-attendance">0%</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>This Month</h4>
+                        <span id="month-attendance">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Page -->
+            <div class="page schedule-page" id="schedule-page">
+                <div class="page-header">
+                    <h2>Class Schedule</h2>
+                    <button class="btn btn-primary" id="add-schedule-btn">
+                        <i class="fas fa-plus"></i> Add Schedule
+                    </button>
+                </div>
+                
+                <div class="schedule-grid" id="schedule-grid">
+                    <div class="time-column">
+                        <div class="time-slot">8:00 AM</div>
+                        <div class="time-slot">9:00 AM</div>
+                        <div class="time-slot">10:00 AM</div>
+                        <div class="time-slot">11:00 AM</div>
+                        <div class="time-slot">12:00 PM</div>
+                        <div class="time-slot">1:00 PM</div>
+                        <div class="time-slot">2:00 PM</div>
+                        <div class="time-slot">3:00 PM</div>
+                        <div class="time-slot">4:00 PM</div>
+                        <div class="time-slot">5:00 PM</div>
+                    </div>
+                    <div class="days-grid">
+                        <div class="day-column" data-day="monday">
+                            <h4>Monday</h4>
+                            <div class="schedule-slots" id="monday-slots"></div>
+                        </div>
+                        <div class="day-column" data-day="tuesday">
+                            <h4>Tuesday</h4>
+                            <div class="schedule-slots" id="tuesday-slots"></div>
+                        </div>
+                        <div class="day-column" data-day="wednesday">
+                            <h4>Wednesday</h4>
+                            <div class="schedule-slots" id="wednesday-slots"></div>
+                        </div>
+                        <div class="day-column" data-day="thursday">
+                            <h4>Thursday</h4>
+                            <div class="schedule-slots" id="thursday-slots"></div>
+                        </div>
+                        <div class="day-column" data-day="friday">
+                            <h4>Friday</h4>
+                            <div class="schedule-slots" id="friday-slots"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="storage.js"></script>
+    <script src="utils.js"></script>
+    <script src="charts.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
