@@ -1156,13 +1156,13 @@ class CollegeManagementApp {
                         <select name="department" class="form-select" required>
                             <option value="">Select Department</option>
                             <option value="Computer Science" ${student?.department === 'Computer Science' ? 'selected' : ''}>Computer Science</option>
-                            <option value="Mathematics" ${student?.department === 'Mathematics' ? 'selected' : ''}>Mathematics</option>
-                            <option value="Physics" ${student?.department === 'Physics' ? 'selected' : ''}>Physics</option>
-                            <option value="Chemistry" ${student?.department === 'Chemistry' ? 'selected' : ''}>Chemistry</option>
-                            <option value="Biology" ${student?.department === 'Biology' ? 'selected' : ''}>Biology</option>
-                            <option value="English" ${student?.department === 'English' ? 'selected' : ''}>English</option>
-                            <option value="History" ${student?.department === 'History' ? 'selected' : ''}>History</option>
-                            <option value="Psychology" ${student?.department === 'Psychology' ? 'selected' : ''}>Psychology</option>
+                            <option value="Information Technology" ${student?.department === 'Information Technology' ? 'selected' : ''}>Information Technology</option>
+                            <option value="Mechanical Engineering" ${student?.department === 'Mechanical Engineering' ? 'selected' : ''}>Mechanical Engineering</option>
+                            <option value="Civil Engineering" ${student?.department === 'Civil Engineering' ? 'selected' : ''}>Civil Engineering</option>
+                            <option value="Electrical Engineering" ${student?.department === 'Electrical Engineering' ? 'selected' : ''}>Electrical Engineering</option>
+                            <option value="Electronics and Communication Engineering" ${student?.department === 'Electronics and Communication Engineering' ? 'selected' : ''}>Electronics and Communication Engineering</option>
+                            <option value="Electronics and Communication Engineering" ${student?.department === 'Electronics and Communication Engineering' ? 'selected' : ''}>Electronics and Communication Engineering</option>
+                            <option value="Chemical Engineering" ${student?.department === 'Chemical Engineering' ? 'selected' : ''}>Chemical Engineering</option>
                         </select>
                     </div>
                     <div class="form-group">
