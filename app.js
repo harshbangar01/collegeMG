@@ -1,6 +1,7 @@
 /**
  * Main Application Controller for College Management System
  * Handles navigation, UI interactions, data management, and form processing
+ * Author: Harsh Bangar
  */
 
 class CollegeManagementApp {
